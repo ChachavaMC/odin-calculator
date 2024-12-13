@@ -18,13 +18,25 @@ document.querySelectorAll("div.calcDigit").forEach((elem) => {
 //  Operators
 document.querySelectorAll("div.calcOperator").forEach((elem) => {
     elem.addEventListener("click", (e) => {
-        if(!inputNum1){
+        const operator = e.target.textContent;
+        if (!inputNum1){
+            inputOperator = operator;
             inputNum1 = mainDisplay.textContent;
-        }
-        if(inputNum1){
-            inputOperator = e.target.textContent;
             updateMainDisplay("");
             updateHistoryDisplay();
+        } else {
+            //  There is something in inputNum1
+            if(mainDisplay.textContent){
+                // If inputNum1 is there and a new number has been typed in
+                // assign the new number to inputNum2 and run the operate function
+                inputNum2 = mainDisplay.textContent;
+                updateHistoryDisplay();
+                result = operate(inputNum1, inputNum2, inputOperator);
+                updateMainDisplay(result);
+            } else {
+                inputOperator = operator;
+                updateHistoryDisplay();
+            }
         }
     })
 })
