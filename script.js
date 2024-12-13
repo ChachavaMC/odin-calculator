@@ -59,3 +59,9 @@ function operate(num1, num2, operator){
             return "80085";
     }
 }
+
+function initCalc(){
+    inputNum1 = "";
+    inputNum2 = "";
+    inputOperator = "";
+}
