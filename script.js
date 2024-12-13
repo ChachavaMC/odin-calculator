@@ -2,6 +2,7 @@ let inputNum1 = "";
 let inputNum2 = "";
 let inputOperator = "";
 const mainDisplay = document.querySelector("div#calcScreenMain");
+const historyDisplay = document.querySelector("div#calcScreenHistory");
 
 //  Event Listeners
 //  Digits (including decimal point)
@@ -17,10 +18,13 @@ document.querySelectorAll("div.calcDigit").forEach((elem) => {
 //  Operators
 document.querySelectorAll("div.calcOperator").forEach((elem) => {
     elem.addEventListener("click", (e) => {
-        inputNum1 = mainDisplay.textContent;
+        if(!inputNum1){
+            inputNum1 = mainDisplay.textContent;
+        }
         if(inputNum1){
             inputOperator = e.target.textContent;
             updateMainDisplay("");
+            updateHistoryDisplay();
         }
     })
 })
@@ -75,7 +79,11 @@ function initCalc(){
     inputNum2 = "";
     inputOperator = "";
     updateMainDisplay("");
+    updateHistoryDisplay();
 }
 function updateMainDisplay(str){
     mainDisplay.textContent = str;
+}
+function updateHistoryDisplay(){
+    historyDisplay.textContent = `${inputNum1} ${inputOperator} ${inputNum2}`
 }
