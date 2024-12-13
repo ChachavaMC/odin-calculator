@@ -2,6 +2,32 @@ let inputNum1 = "";
 let inputNum2 = "";
 let inputOperator = "";
 
+//  Event Listeners
+//  Digits (including decimal point)
+document.querySelectorAll("div.calcDigit").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+        console.log(e.target.textContent);
+    })
+})
+//  Operators
+document.querySelectorAll("div.calcOperator").forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+        console.log(e.target.textContent);
+    })
+})
+// Equals
+document.querySelector("div.calcEquals").addEventListener("click", (e) => {
+    console.log(e.target.textContent);
+})
+//  All Clear
+document.querySelector("div.calcAllClear", (e) => {
+    console.log(e.target.textContent);
+})
+//  Clear digit (basically acts as a delete key)
+document.querySelector("div#calcClear", (e) => {
+    console.log(e.target.textContent);
+})
+
 function calcAdd(a, b){
     return a + b;
 }
