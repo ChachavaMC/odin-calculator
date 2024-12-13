@@ -1,12 +1,17 @@
 let inputNum1 = "";
 let inputNum2 = "";
 let inputOperator = "";
+const mainDisplay = document.querySelector("div#calcScreenMain");
 
 //  Event Listeners
 //  Digits (including decimal point)
 document.querySelectorAll("div.calcDigit").forEach((elem) => {
     elem.addEventListener("click", (e) => {
         console.log(e.target.textContent);
+        if(mainDisplay.textContent.length <= 10){
+            let newDisplay = mainDisplay.textContent + e.target.textContent;
+            updateMainDisplay(newDisplay);
+        }
     })
 })
 //  Operators
@@ -20,8 +25,9 @@ document.querySelector("div.calcEquals").addEventListener("click", (e) => {
     console.log(e.target.textContent);
 })
 //  All Clear
-document.querySelector("div.calcAllClear", (e) => {
+document.querySelector("div.calcAllClear").addEventListener("click", (e) => {
     console.log(e.target.textContent);
+    initCalc();
 })
 //  Clear digit (basically acts as a delete key)
 document.querySelector("div#calcClear", (e) => {
@@ -64,4 +70,9 @@ function initCalc(){
     inputNum1 = "";
     inputNum2 = "";
     inputOperator = "";
+    updateMainDisplay("");
+}
+function updateMainDisplay(str){
+    const mainDisplay = document.querySelector("div#calcScreenMain");
+    mainDisplay.textContent = str;
 }
