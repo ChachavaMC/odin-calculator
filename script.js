@@ -17,7 +17,11 @@ document.querySelectorAll("div.calcDigit").forEach((elem) => {
 //  Operators
 document.querySelectorAll("div.calcOperator").forEach((elem) => {
     elem.addEventListener("click", (e) => {
-        console.log(e.target.textContent);
+        inputNum1 = mainDisplay.textContent;
+        if(inputNum1){
+            inputOperator = e.target.textContent;
+            updateMainDisplay("");
+        }
     })
 })
 // Equals
@@ -73,6 +77,5 @@ function initCalc(){
     updateMainDisplay("");
 }
 function updateMainDisplay(str){
-    const mainDisplay = document.querySelector("div#calcScreenMain");
     mainDisplay.textContent = str;
 }
